@@ -47,7 +47,7 @@ export default [
         }
     },
     {
-        path: '/admin/user/edit',
+        path: '/user/:id',
         name: 'user-edit',
         component: UserEdit,
         meta: {

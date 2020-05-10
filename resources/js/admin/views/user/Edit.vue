@@ -15,38 +15,54 @@
                     </div>
                 </div>
 
-                <!--begin::Form-->
-                <form class="m-form m-form--fit m-form--label-align-right">
+                <form class="m-form m-form--fit m-form--label-align-right" @submit.prevent="edit">
                     <div class="m-portlet__body">
                         <div class="form-group m-form__group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control m-input" id="name" name="name" aria-describedby="emailHelp" placeholder="Enter Your Name">
+                            <input
+                                type="text"
+                                class="form-control m-input"
+                                id="name"
+                                v-model="user.name"
+                                name="name" aria-describedby="emailHelp"
+                                placeholder="Enter Your Name">
                         </div>
                         <div class="form-group m-form__group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control m-input" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter Your Email">
+                            <input
+                                type="email"
+                                class="form-control m-input"
+                                id="email"
+                                v-model="user.email"
+                                name="email"
+                                aria-describedby="emailHelp"
+                                placeholder="Enter Your Email">
                         </div>
                         <div class="form-group m-form__group">
                             <label for="status">Status</label>
-                            <select class="form-control m-input" id="status" name="status">
+                            <select class="form-control m-input" v-model="user.status" id="status" name="status">
                                 <option value="0">Male</option>
                                 <option value="1">Female</option>
                             </select>
                         </div>
                         <div class="form-group m-form__group">
                             <label for="description">Discription</label>
-                            <textarea class="form-control m-input" id="description" name="description" rows="3"></textarea>
+                            <textarea
+                                class="form-control m-input"
+                                id="description"
+                                name="description"
+                                rows="3"
+                                v-model="user.description"
+                            ></textarea>
                         </div>
                     </div>
                     <div class="m-portlet__foot m-portlet__foot--fit">
                         <div class="m-form__actions">
-                            <button type="reset" class="btn btn-success">Save</button>
+                            <button type="submit" class="btn btn-success">Save</button>
                             <button type="reset" class="btn btn-secondary">Cancel</button>
                         </div>
                     </div>
                 </form>
-
-                <!--end::Form-->
             </div>
         </div>
     </div>
@@ -54,7 +70,23 @@
 
 <script>
     export default {
-        name: "Edit"
+        data() {
+            return {
+                user: null,
+            }
+        },
+        created() {
+            axios.get(`/api/user/${this.$route.params.id}`)
+                .then(res => this.user = res.data.data)
+                .catch(error => error.response.data)
+        },
+        methods: {
+            edit() {
+                console.log(this.$route.params.id);
+                axios.patch(`/api/user/${this.$route.params.id}`, this.user)
+                    .then(res => this.$router.push({name: 'user-index'}))
+            }
+        }
     }
 </script>
 

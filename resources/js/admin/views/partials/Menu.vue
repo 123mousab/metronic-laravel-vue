@@ -32,8 +32,6 @@
                     <ul class="m-menu__subnav">
                         <router-link to="/admin/user/index" tag="li" class="m-menu__item  m-menu__item--active" aria-haspopup="true"><a href="inner.html" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Index</span></a></router-link>
                         <router-link to="/admin/user/create" tag="li" class="m-menu__item  m-menu__item--active" aria-haspopup="true"><a href="inner.html" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Create</span></a></router-link>
-                        <router-link to="/admin/user/edit" tag="li" class="m-menu__item  m-menu__item--active" aria-haspopup="true"><a href="inner.html" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Edit</span></a></router-link>
-
                     </ul>
                 </div>
             </li>

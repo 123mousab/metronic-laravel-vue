@@ -53,7 +53,8 @@
 <!--begin::Global Theme Bundle -->
 <script src="{{asset('/')}}js/vendors.bundle.js" type="text/javascript"></script>
 <script src="{{asset('/')}}js/scripts.bundle.js" type="text/javascript"></script>
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="{{ mix('js/admin/app.js') }}"></script>
 <!--end::Global Theme Bundle -->
 </body>
 

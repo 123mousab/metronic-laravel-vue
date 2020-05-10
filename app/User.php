@@ -17,4 +17,12 @@ class User extends Model
         'remember_token'
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
+    public function getPathAttribute() {
+        return "/user/$this->id";
+    }
+
 }
